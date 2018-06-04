@@ -65,7 +65,7 @@ void TreeOperationsMenu()
 				break;
 		}
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		getchar();
+		std::cin.get();
 	} while (m_choice != 99);
 }
 

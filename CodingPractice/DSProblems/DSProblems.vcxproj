@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -116,7 +116,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\LLProblems.cpp" />
     <ClCompile Include="src\ArrayProblems.cpp" />
+    <ClCompile Include="src\LLNode.cpp" />
+    <ClCompile Include="src\StackProblmes.cpp" />
     <ClCompile Include="src\StringProblems.cpp" />
     <ClCompile Include="src\TreeProblems.cpp" />
     <ClCompile Include="src\Main.cpp" />
@@ -124,6 +127,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\ArrayProblems.h" />
+    <ClInclude Include="header\LLNode.h" />
+    <ClInclude Include="header\LLProblems.h" />
+    <ClInclude Include="header\StackProblems.h" />
     <ClInclude Include="header\StringProblems.h" />
     <ClInclude Include="header\TreeProblems.h" />
     <ClInclude Include="header\TreeNode.h" />

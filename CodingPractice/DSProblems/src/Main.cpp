@@ -1,7 +1,9 @@
  #include <iostream>
-#include "../header/TreeNode.h"
 #include "../header/TreeProblems.h"
 #include "../header/ArrayProblems.h"
+#include "../header/Stackproblems.h"
+#include "../header/LLProblems.h"
+
  
 int main()
 {
@@ -26,10 +28,10 @@ int main()
 				TreeOperationsMenu();
 				break;
 			case 2:
-				std::cout << "\nComing Soon" << std::endl;
+				StackProblesMenu();
 				break;
 			case 3:
-				std::cout << "\nComing Soon" << std::endl;
+				LLProblems::LLProblemsMenu();
 				break;
 			case 4:
 				std::cout << "\nComing Soon" << std::endl;
@@ -69,7 +71,5 @@ int main()
 	std::cout << "\nHeight Of Binary Tree -  " << HeightOfBinaryTreeIterative(root) <<std::endl;
 
 	*/
-	getchar();
-
 	return 0;
 }
