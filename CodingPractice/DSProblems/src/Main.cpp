@@ -25,7 +25,7 @@ int main()
 		switch (m_choice)
 		{
 			case 1 : 
-				TreeOperationsMenu();
+				TreeProblems::TreeOperationsMenu();
 				break;
 			case 2:
 				StackProblesMenu();

@@ -17,7 +17,7 @@ void LLProblems::LLProblemsMenu()
 
 	do
 	{
-		system("CLS");
+		system("CLS || clear");
 		std::cout << "\nLL DataStructure Problems" << std::endl;
 		std::cout << "\n1) LL Traversal" << std::endl;
 		std::cout << "\n2) Reverse Linked List" << std::endl;
@@ -40,7 +40,7 @@ void LLProblems::LLProblemsMenu()
 			break;
 		case 3:
 			std::cout << "\nDetect Loop/Cycle in given LL" << std::endl;
-			LLProblems::DetectLoopInLL(head) ? std::cout << "Loop Exists" :  std::cout << "Loop doesnt exist";
+			(LLProblems::DetectLoopInLL(head) == true) ? std::cout << "Loop Exists" :  std::cout << "Loop doesn't exist";
 			std::cout << std::endl;
 			break;
 		case 4:
