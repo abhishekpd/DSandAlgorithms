@@ -5,6 +5,7 @@
 #include <limits>
 #include <map>
 #include <unordered_map>
+#include <utility> 
 #include "../header/TreeNode.h"
 #include "../header/TreeProblems.h"
 
@@ -22,6 +23,7 @@ void TreeProblems::TreeOperationsMenu()
 	root->Insert(10);
 	root->Insert(12);
 	root->Insert(14);
+	root->Insert(1);
 
 	do
 	{
@@ -32,10 +34,13 @@ void TreeProblems::TreeOperationsMenu()
 		std::cout << "\n3) ReverseLevelOrderTraversal" << std::endl;
 		std::cout << "\n4) Number Of Leaf Nodes" << std::endl;
 		std::cout << "\n5) Print Nodes at KDistance from root" << std::endl;
-		std::cout << "\n6) Height Of Binary Tree Iterative" << std::endl;
-		std::cout << "\n7) Left view Of Binary Tree Iterative" << std::endl;
-		std::cout << "\n8) Right view Of Binary Tree Iterative" << std::endl;
+		std::cout << "\n6) Height Of Binary Tree -- Iterative" << std::endl;
+		std::cout << "\n7) Left view Of Binary Tree -- Recursion" << std::endl;
+		std::cout << "\n8) Right view Of Binary Tree -- Recursion" << std::endl;
 		std::cout << "\n9) Count Half Nodes in Binary Tree Iterative" << std::endl;
+		std::cout << "\n10)Top view Of Binary Tree -- Iterative" << std::endl;
+		std::cout << "\n11) Right view Of Binary Tree Iterative -- Iterative" << std::endl;
+		std::cout << "\n12) Left view Of Binary Tree Iterative -- Iterative" << std::endl;
 		std::cout << "\nInput your choice\t";
 		std::cin >> m_choice;
 
@@ -72,13 +77,13 @@ void TreeProblems::TreeOperationsMenu()
 				std::cout << std::endl;
 				break;
 			case 7:
-				std::cout << "\nLeft view of given binary tree\t" << std::endl;
+				std::cout << "\nLeft view of given binary tree -- Recursion\t" << std::endl;
 				L_maxLevel = 0;
 				TreeProblems::LeftViewOfTree(root, 1, &L_maxLevel);
 				std::cout << std::endl;
 				break;
 			case 8:
-				std::cout << "\nRight view of given binary tree\t" << std::endl;
+				std::cout << "\nRight view of given binary tree -- Recursion\t" << std::endl;
 				R_maxLevel = 0;
 				TreeProblems::RightViewOfTree(root, 1, &R_maxLevel);
 				std::cout << std::endl;
@@ -89,7 +94,15 @@ void TreeProblems::TreeOperationsMenu()
 				break;
 			case 10:
 				std::cout << "Top View of a given binary tree" << std::endl;
-				//TreeProblems::TopViewOfTree(root);
+				TreeProblems::TopViewOfTree(root);
+				break;
+			case 11:
+				std::cout << "Right View of a given binary tree -- iteratively" << std::endl;
+				TreeProblems::RightViewOfTreeIterative(root);
+				break;
+			case 12:
+				std::cout << "Left View of a given binary tree -- iteratively" << std::endl;
+				TreeProblems::LeftViewOfTreeIterative(root);
 				break;
 		}
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -323,36 +336,94 @@ int TreeProblems::CountHalfNodesInATree(TreeNode *root)
 	return m_count;
 }
 
-/*
+
 void TreeProblems::TopViewOfTree(TreeNode *root)
 {
-	if (root == NULL)
+	//std::map<int, int> m_unorderedMap;
+	std::queue< std::pair<TreeNode *,int>>  m_Queue;
+	std::unordered_map<int, long int> m_unorderedMap;
+	std::unordered_map<int, long int>::iterator map_iterator;
+
+	if (root == nullptr)
 		return;
 
-	std::unordered_map<int, int> m_unorderedMap;
-	std::queue< std::pair<TreeNode *, int> > m_Queue;
-
-	m_Queue.push(std::make_pair(root, 0));
+	m_Queue.push(std::make_pair(root,0));
 
 	while (!m_Queue.empty())
 	{
-		std::pair<TreeNode*, int> m_IteratorPair = m_Queue.front();
-		TreeNode *iterator_node = m_IteratorPair.first;
-		int m_distance = m_IteratorPair.second;
+		std::pair<TreeNode *, int> iterator_pair = m_Queue.front();
+		TreeNode *iterator_node = iterator_pair.first;
+		int m_distance = iterator_pair.second;
 
-		if (m_unorderedMap.find(m_distance) == m_unorderedMap.end())
+		map_iterator = m_unorderedMap.find(m_distance);
+		if (map_iterator == m_unorderedMap.end())
 		{
-			m_unorderedMap.insert(m_distance, iterator_node->getNodeData());
+			m_unorderedMap.insert(std::pair<int, long int>(m_distance, iterator_node->getNodeData()));
 			std::cout << "\t" << iterator_node->getNodeData();
 		}
 
-		if(iterator_node->getLeftNode() != nullptr)
-			m_Queue.push(std::make_pair(iterator_node->getLeftNode(), m_distance-1));
-
+		if (iterator_node->getLeftNode() != nullptr)
+			m_Queue.push(std::make_pair(iterator_node->getLeftNode(), m_distance - 1));
+			
 		if (iterator_node->getRightNode() != nullptr)
 			m_Queue.push(std::make_pair(iterator_node->getRightNode(), m_distance + 1));
-
+	
 		m_Queue.pop();
 	}
 }
-*/
+
+void TreeProblems::RightViewOfTreeIterative(TreeNode *root)
+{
+	if (root == nullptr)
+		return;
+
+	std::queue<TreeNode *> m_queue;
+	m_queue.push(root);
+
+	while (!m_queue.empty())
+	{
+		int n = m_queue.size();
+
+		for(int i=1;i<=n;i++){
+			TreeNode *iterator_node = m_queue.front();
+			m_queue.pop();
+
+			if (i == n)
+				std::cout << "\t" << iterator_node->getNodeData();
+
+			if (iterator_node->getLeftNode() != nullptr)
+				m_queue.push(iterator_node->getLeftNode());
+
+			if (iterator_node->getRightNode() != nullptr)
+				m_queue.push(iterator_node->getRightNode());
+		}
+	}
+}
+
+void TreeProblems::LeftViewOfTreeIterative(TreeNode *root)
+{
+	if (root == nullptr)
+		return;
+
+	std::queue<TreeNode *> m_queue;
+	m_queue.push(root);
+
+	while (!m_queue.empty())
+	{
+		int queueSize = m_queue.size();
+
+		for (int i = 0; i < queueSize; i++)
+		{
+			TreeNode *iteratorNode = m_queue.front();
+			m_queue.pop();
+
+			if (i == 0)
+				std::cout << "\t" << iteratorNode->getNodeData();
+
+			if (iteratorNode->getLeftNode() != nullptr)
+				m_queue.push(iteratorNode->getLeftNode());
+			if (iteratorNode->getRightNode() != nullptr)
+				m_queue.push(iteratorNode->getRightNode());
+		}
+	}
+}

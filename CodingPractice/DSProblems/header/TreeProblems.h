@@ -1,6 +1,6 @@
 #pragma once
-#ifndef TREEPROBLES_H
-#define TREEPROBLEMS_H
+#ifndef HEADER_TREEPROBLES_H
+#define HEADER_TREEPROBLEMS_H
 
 #include "TreeNode.h"
 
@@ -16,7 +16,9 @@ namespace TreeProblems
 	void LeftViewOfTree(TreeNode *root, int curren_level, int *max_level);
 	void RightViewOfTree(TreeNode *root, int curren_level, int *max_level);
 	int CountHalfNodesInATree(TreeNode *root);
-	//void TopViewOfTree(TreeNode *root);
+	void TopViewOfTree(TreeNode *root);
+	void RightViewOfTreeIterative(TreeNode *root);
+	void LeftViewOfTreeIterative(TreeNode *root);
 }
 
-#endif // ! TREEPROBLEMS_H
+#endif // ! HEADER_TREEPROBLEMS_H

@@ -116,9 +116,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\GeneralProblems.cpp" />
     <ClCompile Include="src\LLProblems.cpp" />
     <ClCompile Include="src\ArrayProblems.cpp" />
     <ClCompile Include="src\LLNode.cpp" />
+    <ClCompile Include="src\SortingSearchingAlgorithms.cpp" />
     <ClCompile Include="src\StackProblmes.cpp" />
     <ClCompile Include="src\StringProblems.cpp" />
     <ClCompile Include="src\TreeProblems.cpp" />
@@ -127,8 +129,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\ArrayProblems.h" />
+    <ClInclude Include="header\GeneralProblems.h" />
     <ClInclude Include="header\LLNode.h" />
     <ClInclude Include="header\LLProblems.h" />
+    <ClInclude Include="header\SortingSearchingAlgorithms.h" />
     <ClInclude Include="header\StackProblems.h" />
     <ClInclude Include="header\StringProblems.h" />
     <ClInclude Include="header\TreeProblems.h" />

@@ -1,6 +1,6 @@
 #pragma once
-#ifndef LLNODE_H
-#define LLNODE_H
+#ifndef HEADER_LLNODE_H
+#define HEADER_LLNODE_H
 
 class LLNode
 {
@@ -16,5 +16,5 @@ public:
 	LLNode* GetNextNode();
 	static void TraverseLL(LLNode *head);
 };
-#endif // LLNODE_H
+#endif // ! HEADER_LLNODE_H
 

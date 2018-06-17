@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef  LLPROBLEMS_H
-#define LLPROBLEMS_H
+#ifndef  HEADER_LLPROBLEMS_H
+#define HEADER_LLPROBLEMS_H
 
 #include "../header/LLNode.h"
 
@@ -12,5 +12,5 @@ namespace LLProblems {
 }
 
 
-#endif // ! LLPROBLEMS_H
+#endif // ! HEADER_LLPROBLEMS_H
 

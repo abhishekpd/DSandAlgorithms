@@ -2,8 +2,8 @@
 
 #include <iostream>
 
-#ifndef TREENODE_H
-#define TREENODE_H
+#ifndef HEADER_TREENODE_H
+#define HEADER_TREENODE_H
 
 class TreeNode
 {
@@ -26,4 +26,4 @@ public:
 
 
 
-#endif
+#endif // ! HEADER_TREENODE_H

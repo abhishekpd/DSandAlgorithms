@@ -1,10 +1,10 @@
 #pragma once
 
-#ifndef STACKPROBLEMS_H
-#define STACKPROBLEMS_H
+#ifndef HEADER_STACKPROBLEMS_H
+#define HEADER_STACKPROBLEMS_H
 
 void StackProblesMenu();
 void FindNextMaxInteger();
 void RainTappingProblem();
 
-#endif // STACKPROBLEMS_H
+#endif // ! HEADER_STACKPROBLEMS_H
