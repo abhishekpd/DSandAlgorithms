@@ -13,7 +13,9 @@ void ArrayProblems::ProblemsMenu()
 		std::cout << "\nGeneral DataStructure Problems" << std::endl;
 		std::cout << "\n1) Next Greater Element in Array" << std::endl;
 		std::cout << "\n2) Find pivot in a sorted rotated array - Iterative Method" << std::endl;
-		std::cout << "\n3) Largest Sum of Contiguous Subarray" << std::endl;
+		std::cout << "\n3) Find pivot in a sorted rotated array - Binary Search Method" << std::endl;
+		std::cout << "\n4) Find Element in a sorted rotated array - Linear Search" << std::endl;
+		std::cout << "\n5) Find Element in a sorted rotated array - " << std::endl;
 		std::cout << "\nInput your choice\t";
 		std::cin >> m_choice;
 
@@ -34,21 +36,25 @@ void ArrayProblems::ProblemsMenu()
 		}
 			break;
 		case 3:
-			std::cout << "\nLargest Sum of Contiguous Subarray Solution" << std::endl;
-			ArrayProblems::MaxmimSubArrayKadanesAlgorithm(m_inputArray, (sizeof(m_inputArray) / sizeof(m_inputArray[0]) ));
+		{
+			int m_inputArr[] = { 73,85,94,21,27,34,47,54,66 };
+			std::cout << "\nFind pivot in a sorted rotated array - Binary Search Method" << std::endl;
+			ArrayProblems::FindPivotInSortedArrayWithBinarySearch(m_inputArr, (sizeof(m_inputArr) / sizeof(m_inputArr[0]) ));
+		}
 			break;
 		case 4:
 		{
-			std::cout << "\nNo of leaf nodes in given binary tree\t";
+			std::cout << "\nFind Element in a sorted rotated array - Linear Search\t";
 			int m_inputArr[] = { 73,85,94,21,27,34,47,54,66 };
-			ArrayProblems::FindPivotInSortedArrayWithBinarySearch(m_inputArr, (sizeof(m_inputArr) / sizeof(m_inputArr[0]));
+			//ArrayProblems::FindElementInRotatedSortedArrayWithLinearSearch(m_inputArr, (sizeof(m_inputArr) / sizeof(m_inputArr[0]) ));
 		}
 			break;
 		case 5:
-			std::cout << "\nPlease enter kDistance from root\t";
-			std::cin >> m_input;
-			//printKDistanceNode(root, m_input);
-			std::cout << std::endl;
+		{
+			std::cout << "\nFind Element in a sorted rotated array - Binary Search\t";
+			int m_inputArr[] = { 73,85,94,21,27,34,47,54,66 };
+			//ArrayProblems::FindElementInRotatedSortedArrayWithBinarySearch(m_inputArr, (sizeof(m_inputArr) / sizeof(m_inputArr[0])));
+		}
 			break;
 		case 6:
 			//std::cout << "\nHeight of given binary tree\t" << HeightOfBinaryTreeIterative(root);
@@ -145,5 +151,25 @@ void ArrayProblems::FindPivotInSortedArrayBruteForce(int m_input[],int size)
 
 void ArrayProblems::FindPivotInSortedArrayWithBinarySearch(int m_input[], int size)
 {
+	int m_pivot=0;
+	int start, end,mid;
+	start = 0;
+	end = size - 1;
+	if (m_input[0] < m_input[size - 1]) {
+		std::cout << "Array is roatated at Index -->\t" << m_pivot << "\t with element --> " << m_input[m_pivot] << std::endl;
+	}
+
+	while (start <= end) {
+		mid = (start + end) / 2;
+
+		if (m_input[mid] > m_input[mid + 1]) {
+			std::cout << "Array is roatated at Index -->\t" << (mid + 1) << "\t with element --> " << m_input[mid + 1] << std::endl;
+			break;
+		}
+		else if (m_input[start] <= m_input[mid])
+			start = mid + 1;
+		else
+			end = mid - 1;
+	}
 
 }

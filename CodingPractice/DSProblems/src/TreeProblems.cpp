@@ -340,7 +340,7 @@ int TreeProblems::CountHalfNodesInATree(TreeNode *root)
 void TreeProblems::TopViewOfTree(TreeNode *root)
 {
 	//std::map<int, int> m_unorderedMap;
-	std::queue< std::pair<TreeNode *,int>>  m_Queue;
+	std::queue< std::pair<TreeNode *,int> >  m_Queue;
 	std::unordered_map<int, long int> m_unorderedMap;
 	std::unordered_map<int, long int>::iterator map_iterator;
 

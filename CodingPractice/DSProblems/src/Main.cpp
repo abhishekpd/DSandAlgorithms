@@ -3,7 +3,7 @@
 #include "../header/ArrayProblems.h"
 #include "../header/Stackproblems.h"
 #include "../header/LLProblems.h"
-#include "../header/SortingAlgorithm.h"
+#include "../header/SortingSearchingAlgorithms.h"
 #include "../header/GeneralProblems.h"
  
 int main()
@@ -35,7 +35,7 @@ int main()
 				LLProblems::LLProblemsMenu();
 				break;
 			case 4:
-				SortingAlgorithm::SortingAlgorithmMenu();
+				SortingSearchingAlgorithms::SortingSearchingMenu();
 				break;
 			case 5:
 				GeneralProblems::ProblemsMenu();
