@@ -116,7 +116,7 @@ void SortingSearchingAlgorithms::MergeRoutine(int m_input[], int m_leftindex, in
 {
 	int i, j, k;
 	int m_leftHalfSize = m_midIndex - m_leftindex + 1;
-	int m_RightHalfSize = m_rightIndex  - m_leftindex;
+	int m_RightHalfSize = m_rightIndex  - m_midIndex;
 
 	int *m_LeftHalf, *m_RightHalf;
 

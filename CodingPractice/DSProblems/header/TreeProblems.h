@@ -19,6 +19,7 @@ namespace TreeProblems
 	void TopViewOfTree(TreeNode *root);
 	void RightViewOfTreeIterative(TreeNode *root);
 	void LeftViewOfTreeIterative(TreeNode *root);
+	int SizeOfBinaryTree(TreeNode *root);
 }
 
 #endif // ! HEADER_TREEPROBLEMS_H

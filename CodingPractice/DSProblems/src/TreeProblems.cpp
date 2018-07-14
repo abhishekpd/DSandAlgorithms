@@ -39,8 +39,9 @@ void TreeProblems::TreeOperationsMenu()
 		std::cout << "\n8) Right view Of Binary Tree -- Recursion" << std::endl;
 		std::cout << "\n9) Count Half Nodes in Binary Tree Iterative" << std::endl;
 		std::cout << "\n10)Top view Of Binary Tree -- Iterative" << std::endl;
-		std::cout << "\n11) Right view Of Binary Tree Iterative -- Iterative" << std::endl;
-		std::cout << "\n12) Left view Of Binary Tree Iterative -- Iterative" << std::endl;
+		std::cout << "\n11) Right view Of Binary Tree -- Iterative" << std::endl;
+		std::cout << "\n12) Left view Of Binary Tree  -- Iterative" << std::endl;
+		std::cout << "\n13) Size Of Binary Tree - Recursive" << std::endl;
 		std::cout << "\nInput your choice\t";
 		std::cin >> m_choice;
 
@@ -104,6 +105,11 @@ void TreeProblems::TreeOperationsMenu()
 				std::cout << "Left View of a given binary tree -- iteratively" << std::endl;
 				TreeProblems::LeftViewOfTreeIterative(root);
 				break;
+			case 13:
+				std::cout << "Size a given binary tree -- Recursive" << std::endl;
+				std::cout << "Size a given binary tree --> \t" << TreeProblems::SizeOfBinaryTree(root);
+				break;
+
 		}
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::cin.get();
@@ -336,6 +342,13 @@ int TreeProblems::CountHalfNodesInATree(TreeNode *root)
 	return m_count;
 }
 
+int TreeProblems::SizeOfBinaryTree(TreeNode *root)
+{
+	if (root == nullptr)
+		return 0;
+	else
+		return ( SizeOfBinaryTree(root->getLeftNode()) + 1 + SizeOfBinaryTree(root->getRightNode()) );
+}
 
 void TreeProblems::TopViewOfTree(TreeNode *root)
 {
