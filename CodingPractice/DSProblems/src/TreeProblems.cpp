@@ -42,6 +42,7 @@ void TreeProblems::TreeOperationsMenu()
 		std::cout << "\n11) Right view Of Binary Tree -- Iterative" << std::endl;
 		std::cout << "\n12) Left view Of Binary Tree  -- Iterative" << std::endl;
 		std::cout << "\n13) Size Of Binary Tree - Recursive" << std::endl;
+		std::cout << "\n14) Spiral Travels Of Binary Tree" << std::endl;
 		std::cout << "\nInput your choice\t";
 		std::cin >> m_choice;
 
@@ -108,6 +109,10 @@ void TreeProblems::TreeOperationsMenu()
 			case 13:
 				std::cout << "Size a given binary tree -- Recursive" << std::endl;
 				std::cout << "Size a given binary tree --> \t" << TreeProblems::SizeOfBinaryTree(root);
+				break;
+			case 14:
+				std::cout << "Spiral traversal of given tree" << std::endl;
+				TreeProblems::SpiralPrintOfTree(root);
 				break;
 
 		}
@@ -439,4 +444,43 @@ void TreeProblems::LeftViewOfTreeIterative(TreeNode *root)
 				m_queue.push(iteratorNode->getRightNode());
 		}
 	}
+}
+
+void TreeProblems::SpiralPrintOfTree(TreeNode *root)
+{
+	if (root == nullptr)
+		return;
+
+	std::stack<TreeNode *> m_ltor;
+	std::stack<TreeNode *> m_rtol;
+
+	m_ltor.push(root);
+
+	while(!m_ltor.empty() || !m_rtol.empty())
+	{
+		while(!m_ltor.empty())
+		{
+			TreeNode *iterator_node = m_ltor.top();
+			std::cout << "\t" << iterator_node->getNodeData();
+			if(iterator_node->getLeftNode() != nullptr)
+				m_rtol.push(iterator_node->getLeftNode());
+			if(iterator_node->getRightNode() != nullptr)
+				m_rtol.push(iterator_node->getRightNode());
+
+			m_ltor.pop();
+		}
+
+		if(!m_rtol.empty())
+		{
+			TreeNode *iterator_node = m_rtol.top();
+			std::cout << "\t" << iterator_node->getNodeData();
+			if(iterator_node->getRightNode() != nullptr)
+				m_ltor.push(iterator_node->getRightNode());
+			if(iterator_node->getLeftNode() != nullptr)
+				m_ltor.push(iterator_node->getLeftNode());
+
+			m_rtol.pop();
+		}
+	}
+	
 }

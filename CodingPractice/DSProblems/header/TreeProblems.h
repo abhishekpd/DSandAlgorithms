@@ -20,6 +20,7 @@ namespace TreeProblems
 	void RightViewOfTreeIterative(TreeNode *root);
 	void LeftViewOfTreeIterative(TreeNode *root);
 	int SizeOfBinaryTree(TreeNode *root);
+	void SpiralPrintOfTree(TreeNode *root);
 }
 
 #endif // ! HEADER_TREEPROBLEMS_H
