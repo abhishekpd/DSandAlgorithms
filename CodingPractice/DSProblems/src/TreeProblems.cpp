@@ -482,5 +482,54 @@ void TreeProblems::SpiralPrintOfTree(TreeNode *root)
 			m_rtol.pop();
 		}
 	}
+}
+
+void TreeProblems::VerticalOrderTraversal(TreeNode *root)
+{
+
+}
+
+
+void TreeProblems::PrintLeftMostRightMostNode(TreeNode *root)
+{
+	if (root == nullptr)
+		return;
+
+	std::queue<TreeNode *> m_queue;
 	
+	bool isFirst = false;
+	bool isOne = false;
+	int last;
+
+	m_queue.push(root);
+	m_queue.push(nullptr);
+
+	while (!m_queue.empty())
+	{
+		TreeNode *iterator_node = m_queue.front();
+		m_queue.pop();
+
+		if (isFirst)
+		{
+			std::cout << "\t" << iterator_node->getNodeData();
+
+			if (iterator_node->getLeftNode() != nullptr)
+				m_queue.push(iterator_node->getLeftNode());
+			if (iterator_node->getRightNode() != nullptr)
+				m_queue.push(iterator_node->getRightNode());
+
+			isFirst = false;
+			isOne = true;
+		}
+		else if (isOne)
+		{
+
+		}
+
+		else
+		{
+
+		}
+
+	}
 }

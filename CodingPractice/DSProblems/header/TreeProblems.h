@@ -21,6 +21,8 @@ namespace TreeProblems
 	void LeftViewOfTreeIterative(TreeNode *root);
 	int SizeOfBinaryTree(TreeNode *root);
 	void SpiralPrintOfTree(TreeNode *root);
+	void VerticalOrderTraversal(TreeNode *root);
+	void PrintLeftMostRightMostNode(TreeNode *root);
 }
 
 #endif // ! HEADER_TREEPROBLEMS_H

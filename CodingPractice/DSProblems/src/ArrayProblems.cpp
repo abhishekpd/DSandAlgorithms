@@ -20,6 +20,7 @@ void ArrayProblems::ProblemsMenu()
 		std::cout << "\n7) Find Element in a missing number in an array - XOR Method" << std::endl;
 		std::cout << "\n8) Implement Queue using two stacks" << std::endl;
 		std::cout << "\n9) Maximum Water Between two towers problems" << std::endl;
+		std::cout << "\n10) Lonely Integer Problem" << std::endl;
 		std::cout << "\nInput your choice\t";
 		std::cin >> m_choice;
 
@@ -86,6 +87,12 @@ void ArrayProblems::ProblemsMenu()
 			std::cout << "\n" << std::endl;
 			int m_inputElements[] = { 3, 0, 0, 2, 0, 4 };
 			ArrayProblems::WaterTrappingInBetweenBuilding(m_inputElements, (sizeof(m_inputElements) / sizeof(int)) );
+		}
+		case 10:
+		{
+			std::cout << "\n" << std::endl;
+			int m_inputElements[] = { 9, 1, 2, 3, 2, 9,1,7,7 };
+			ArrayProblems::LonelyInteger(m_inputElements, (sizeof(m_inputElements) / sizeof(int)));
 		}
 		break;
 		}
@@ -259,4 +266,15 @@ void ArrayProblems::WaterTrappingInBetweenBuilding(int m_input[],int m_size)
 		m_water += std::min(*(m_leftMaxHeight + i), *(m_RightMaxHeight + i)) - m_input[i];
 
 	std::cout << "Maximum water stored in between towers is  ---    " << m_water << std::endl; 
+}
+
+void ArrayProblems::LonelyInteger(int m_input[],int m_size)
+{
+	int m_missingNumber=0;
+	for (int i=0;i <m_size;i++)
+	{
+		m_missingNumber ^= m_input[i];
+	}
+	std::cout << "Missing Number in array  is  ---    " << m_missingNumber << std::endl;
+
 }
