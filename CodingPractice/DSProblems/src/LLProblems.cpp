@@ -22,6 +22,7 @@ void LLProblems::LLProblemsMenu()
 		std::cout << "\n1) LL Traversal" << std::endl;
 		std::cout << "\n2) Reverse Linked List" << std::endl;
 		std::cout << "\n3) Detect Loop in LL" << std::endl;
+		std::cout << "\n4) Print node at N position from end in reverse direction" << std::endl;
 		std::cout << "\nInput your choice\t";
 		std::cin >> m_choice;
 
@@ -43,15 +44,14 @@ void LLProblems::LLProblemsMenu()
 			(LLProblems::DetectLoopInLL(head) == true) ? std::cout << "Loop Exists" :  std::cout << "Loop doesn't exist";
 			std::cout << std::endl;
 			break;
-		case 4:
+		case 5:
 			//std::cout << "\nNo of leaf nodes in given binary tree\t" << NumberOfLeafNodesInTree(root);
 			std::cout << std::endl;
 			break;
-		case 5:
-			std::cout << "\nPlease enter kDistance from root\t";
+		case 4:
+			std::cout << "\nPlease enter Distance from end Node\t";
 			std::cin >> m_input;
-			//printKDistanceNode(root, m_input);
-			std::cout << std::endl;
+			std::cout <<  LLProblems::NNodeFromEndOfLL(head,m_input)  << std::endl;
 			break;
 		case 6:
 			//std::cout << "\nHeight of given binary tree\t" << HeightOfBinaryTreeIterative(root);
@@ -101,4 +101,38 @@ bool LLProblems::DetectLoopInLL(LLNode *head)
 		m_fastptr = m_fastptr->GetNextNode()->GetNextNode();
 	}
 	return false;
+}
+
+int LLProblems::NNodeFromEndOfLL(LLNode *head,int loc)
+{
+	int node_value;
+	LLNode *main_ptr=head;
+	LLNode *travel_ptr=head;
+	int m_count = 0;
+
+	if(head == nullptr)
+		node_value = -1;
+	else
+	{
+		while(m_count < loc)
+		{
+			if(travel_ptr == nullptr)
+			{
+				std::cout <<  loc << "\tgiven location is greater than length of liked list" << std::endl;
+				node_value = -1;
+			}
+			travel_ptr = travel_ptr->GetNextNode();
+			m_count++;
+		}
+
+		while(travel_ptr != nullptr)
+		{
+			travel_ptr = travel_ptr->GetNextNode();
+			main_ptr = main_ptr->GetNextNode();
+		}
+
+		std::cout <<  loc << "\Node from "<< loc << "location end of liked list --   " <<   main_ptr->GetNodeData() << std::endl;
+		node_value = main_ptr->GetNodeData();
+	}
+	return node_value;
 }

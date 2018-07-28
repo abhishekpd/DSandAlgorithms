@@ -9,6 +9,7 @@ namespace LLProblems {
 	void LLProblemsMenu();
 	LLNode* ReverseLLWithOutRecursion(LLNode *head);
 	bool DetectLoopInLL(LLNode *head);
+	int NNodeFromEndOfLL(LLNode *head,int loc);
 }
 
 
