@@ -23,6 +23,7 @@ namespace TreeProblems
 	void SpiralPrintOfTree(TreeNode *root);
 	void VerticalOrderTraversal(TreeNode *root);
 	void PrintLeftMostRightMostNode(TreeNode *root);
+	void BottomViewOfBinaryTree(TreeNode *root);
 }
 
 #endif // ! HEADER_TREEPROBLEMS_H

@@ -43,12 +43,14 @@ void TreeProblems::TreeOperationsMenu()
 		std::cout << "\n12) Left view Of Binary Tree  -- Iterative" << std::endl;
 		std::cout << "\n13) Size Of Binary Tree - Recursive" << std::endl;
 		std::cout << "\n14) Spiral Travels Of Binary Tree" << std::endl;
+		std::cout << "\n15) Vertical Travels Of Binary Tree" << std::endl;
+		std::cout << "\n16) Print leftmost and rightmost nodes of a Binary Tree" << std::endl;
+		std::cout << "\n17) Bottom view of a Binary Tree" << std::endl;
 		std::cout << "\nInput your choice\t";
 		std::cin >> m_choice;
 
 		switch (m_choice)
 		{
-				
 			case 1:
 				std::cout << "\nInOrder Traversal" << std::endl;
 				root->InOrder(root);
@@ -113,6 +115,18 @@ void TreeProblems::TreeOperationsMenu()
 			case 14:
 				std::cout << "Spiral traversal of given tree" << std::endl;
 				TreeProblems::SpiralPrintOfTree(root);
+				break;
+			case 15:
+				std::cout << "Spiral traversal of given tree" << std::endl;
+				TreeProblems::VerticalOrderTraversal(root);
+				break;
+			case 16:
+				std::cout << "Print LeftMost RightMost Node (CornerNodes) of Binary Tree" << std::endl;
+				TreeProblems::PrintLeftMostRightMostNode(root);
+				break;
+			case 17:
+				std::cout << "Bottom View of a given Binary Tree" << std::endl;
+				TreeProblems::BottomViewOfBinaryTree(root);
 				break;
 
 		}
@@ -182,7 +196,7 @@ int TreeProblems::NumberOfLeafNodesInTree(TreeNode *root)
 		if (iterator_node->getRightNode())
 			m_queue.push(iterator_node->getRightNode());
 
-		if ((iterator_node->getLeftNode() == NULL) && (iterator_node->getRightNode() == NULL))
+		if ((iterator_node->getLeftNode() == nullptr) && (iterator_node->getRightNode() == nullptr))
 			count++;
 		m_queue.pop();
 	
@@ -202,20 +216,20 @@ void TreeProblems::printKDistanceNode(TreeNode* root, int klevel)
 	std::queue<TreeNode *> m_queue;
 	int level = 1;
 	m_queue.push(root);
-	m_queue.push(NULL);
+	m_queue.push(nullptr);
 
 	while (!m_queue.empty()) {
 		TreeNode *iternator_node = m_queue.front();
 
-		if (level == klevel && iternator_node != NULL)
+		if (level == klevel && iternator_node != nullptr)
 		{
 			std::cout << "\t" << iternator_node->getNodeData();
 		}
 		m_queue.pop();
-		if (iternator_node == NULL)
+		if (iternator_node == nullptr)
 		{
 			if (m_queue.front()) {
-				m_queue.push(NULL);
+				m_queue.push(nullptr);
 			}
 			level += 1;
 			if (level > klevel)
@@ -237,7 +251,7 @@ int TreeProblems::HeightOfBinaryTreeIterative(TreeNode *root)
 	std::queue<TreeNode *> m_queue;
 	int treeHeight = 0;
 
-	if (root == NULL)
+	if (root == nullptr)
 		return 0;
 
 	m_queue.push(root);
@@ -484,9 +498,46 @@ void TreeProblems::SpiralPrintOfTree(TreeNode *root)
 	}
 }
 
+
+
+void findMinMaxHD(TreeNode* m_currentNode,int *m_min, int *m_max, int hd) 
+{
+	if (m_currentNode == nullptr)
+		return;
+
+	if (hd < *m_min)
+		*m_min = hd;
+	else if (hd > *m_max)
+		*m_max = hd;
+
+	findMinMaxHD(m_currentNode->getLeftNode(), m_min, m_max, hd - 1);
+	findMinMaxHD(m_currentNode->getRightNode(), m_min, m_max, hd + 1);
+
+}
+
+void printVerticalLines(TreeNode *m_currentNode, int m_lineNo, int hd)
+{
+	if (m_currentNode == nullptr)
+		return;
+
+	if (hd == m_lineNo)
+		std::cout << "\t" << m_currentNode->getNodeData();
+
+	printVerticalLines(m_currentNode->getLeftNode(), m_lineNo, hd - 1);
+	printVerticalLines(m_currentNode->getRightNode(), m_lineNo, hd + 1);
+}
+
 void TreeProblems::VerticalOrderTraversal(TreeNode *root)
 {
+	int m_min = 0, m_max = 0;
+	findMinMaxHD(root,&m_min, &m_max, 0);
 
+	for (int lineNo = m_min; lineNo <= m_max; lineNo++)
+	{
+		std::cout << "\nNodes, Vertical Line of Tree --  " << lineNo << ",   Nodes  Present -- ";
+		printVerticalLines(root, lineNo, 0);
+	}
+	std::cout << std::endl;
 }
 
 
@@ -521,15 +572,63 @@ void TreeProblems::PrintLeftMostRightMostNode(TreeNode *root)
 			isFirst = false;
 			isOne = true;
 		}
-		else if (isOne)
+		else if (iterator_node == nullptr)
 		{
+			if (m_queue.size() >= 1)
+				m_queue.push(nullptr);
 
+			isFirst = true;
+
+			if (!isOne)
+				std::cout << "\t" << last;
 		}
-
 		else
 		{
+			last = iterator_node->getNodeData();
+			isOne = false;
 
+			if (iterator_node->getLeftNode() != nullptr)
+				m_queue.push(iterator_node->getLeftNode());
+			if (iterator_node->getRightNode() != nullptr)
+				m_queue.push(iterator_node->getRightNode());
 		}
-
 	}
+}
+
+void TreeProblems::BottomViewOfBinaryTree(TreeNode *root)
+{
+	if (root == nullptr)
+		return;
+
+	std::map<int, long int> m_map;
+	std::map<int, long int>::iterator mapIterator;
+	std::queue<std::pair<TreeNode *,int> > m_queue;
+
+	m_queue.push(std::make_pair(root,0));
+
+	while (!m_queue.empty())
+	{
+		std::pair<TreeNode *, int> iteratorNode = m_queue.front();
+		int nodeValue = iteratorNode.first->getNodeData();
+		int HD = iteratorNode.second;
+
+		mapIterator= m_map.find(HD);
+		if (mapIterator == m_map.end())
+			m_map.insert(std::pair<int, long int>(HD, nodeValue));
+		else
+			(*mapIterator).second = (long)nodeValue;
+
+		if (iteratorNode.first->getLeftNode() != nullptr)
+			m_queue.push(std::make_pair(iteratorNode.first->getLeftNode(), HD - 1));
+
+		if(iteratorNode.first->getRightNode() != nullptr)
+			m_queue.push(std::make_pair(iteratorNode.first->getRightNode(), HD + 1));
+
+		m_queue.pop();
+	}
+
+	for (auto& mapvalue : m_map) {
+		std::cout << "\t" << mapvalue.second;
+	}
+
 }

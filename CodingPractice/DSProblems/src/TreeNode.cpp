@@ -1,7 +1,7 @@
 #include "../header/TreeNode.h"
 
 TreeNode::TreeNode(int data)
-	: m_data(data), m_left(NULL), m_right(NULL)
+	: m_data(data), m_left(nullptr), m_right(nullptr)
 {
 }
 
@@ -34,7 +34,7 @@ void TreeNode::setRightNode(TreeNode *right)
 void TreeNode::InOrder(TreeNode *root)
 {
 
-	if (root == NULL)
+	if (root == nullptr)
 		return;
 	InOrder(root->getLeftNode());
 	std::cout << "\t" << root->m_data;
@@ -46,24 +46,24 @@ void TreeNode::Insert(int data)
 {
 	if (this->m_data >= data)
 	{
-		if (this->getLeftNode() == NULL)
+		if (this->getLeftNode() == nullptr)
 		{
 			TreeNode *new_node = new TreeNode(data);
 			this->setLeftNode(new_node);
 		}
-		else if (this->getLeftNode() != NULL)
+		else if (this->getLeftNode() != nullptr)
 		{
 			this->getLeftNode()->Insert(data);
 		}		
 	}
 	else if (this->m_data < data)
 	{
-		if(this->getRightNode() == NULL)
+		if(this->getRightNode() == nullptr)
 		{
 			TreeNode *new_node = new TreeNode(data);
 			this->setRightNode(new_node);
 		}
-		else if (this->getRightNode() != NULL)
+		else if (this->getRightNode() != nullptr)
 		{
 			this->getRightNode()->Insert(data);
 		}

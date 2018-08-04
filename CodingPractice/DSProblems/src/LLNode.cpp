@@ -3,13 +3,13 @@
 #include "../header/LLNode.h"
 
  LLNode::LLNode(int data)
-	: m_data(data), m_next(NULL)
+	: m_data(data), m_next(nullptr)
 {
 
 }
 void LLNode::Insert(int data)
 {
-	if (this->GetNextNode() == NULL)
+	if (this->GetNextNode() == nullptr)
 	{
 		LLNode *new_node = new LLNode(data);
 		this->SetNextNode(new_node);
