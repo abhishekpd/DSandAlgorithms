@@ -19,7 +19,7 @@ void FindNextMaxInteger()
 }
 
 void RainTappingProblem()
-{
+{/
 
 }
 
@@ -69,6 +69,7 @@ long largestRectangle(std::vector<int> h) {
 	return m_maxarea;
 }
 
+
 void QueueUsingTwoStacks()
 {
 	long int m_QueriesNo, m_Operation, m_Input;
@@ -76,7 +77,7 @@ void QueueUsingTwoStacks()
 
 	std::stack<int> m_StackOriginal, m_StackReversed;
 
-	for (long int i = 0; i<m_QueriesNo; i++)
+	for (long int i = 0; i < m_QueriesNo; i++)
 	{
 		std::cin >> m_Operation;
 		switch (m_Operation)
@@ -122,51 +123,49 @@ void QueueUsingTwoStacks()
 		break;
 		}
 	}
-
-	int equalStacks(std::vector<int> h1, std::vector<int> h2, std::vector<int> h3) {
+}
+int equalStacks(std::vector<int> h1, std::vector<int> h2, std::vector<int> h3) {
 		/*
 		* Write your code here.
 		*/
-		int m_maxheight;
-		int heightOfh1 = 0, heightOfh2 = 0, heightOfh3 = 0;
-		int i = 0, j = 0, k = 0, iterator;
+	int m_maxheight;
+	int heightOfh1 = 0, heightOfh2 = 0, heightOfh3 = 0;
+	int i = 0, j = 0, k = 0, iterator;
 
-		for (auto& cyleinderHeight : h1)
-			heightOfh1 += cyleinderHeight;
-		for (auto& cyleinderHeight : h2)
-			heightOfh2 += cyleinderHeight;
-		for (auto& cyleinderHeight : h3)
-			heightOfh3 += cyleinderHeight;
+	for (auto& cyleinderHeight : h1)
+		heightOfh1 += cyleinderHeight;
+	for (auto& cyleinderHeight : h2)
+		heightOfh2 += cyleinderHeight;
+	for (auto& cyleinderHeight : h3)
+		heightOfh3 += cyleinderHeight;
 
 
-		while (1)
+	while (1)
+	{
+		if (h1.size() == i || h2.size() == j || h3.size() == k)
 		{
-			if (h1.size() == i || h2.size() == j || h3.size() == k)
-			{
-				m_maxheight = 0;
-				break;
-			}
-
-			if (heightOfh1 == heightOfh2 && heightOfh2 == heightOfh3)
-			{
-				m_maxheight = heightOfh1;
-				break;
-			}
-
-			if (heightOfh1 >= heightOfh2 && heightOfh1 >= heightOfh3) {
-				heightOfh1 -= h1[i++];
-
-			}
-			else if (heightOfh2 >= heightOfh1 && heightOfh2 >= heightOfh3) {
-				heightOfh2 -= h2[j++];
-
-			}
-			else if (heightOfh3 >= heightOfh2 && heightOfh3 >= heightOfh1) {
-				heightOfh3 -= h3[k++];
-			}
-
+			m_maxheight = 0;
+			break;
 		}
 
-		return m_maxheight;
+		if (heightOfh1 == heightOfh2 && heightOfh2 == heightOfh3)
+		{
+			m_maxheight = heightOfh1;
+			break;
+		}
+
+		if (heightOfh1 >= heightOfh2 && heightOfh1 >= heightOfh3) {
+			heightOfh1 -= h1[i++];
+
+		}
+		else if (heightOfh2 >= heightOfh1 && heightOfh2 >= heightOfh3) {
+			heightOfh2 -= h2[j++];
+
+		}
+		else if (heightOfh3 >= heightOfh2 && heightOfh3 >= heightOfh1) {
+			heightOfh3 -= h3[k++];
+		}
+
 	}
+	return m_maxheight;
 }

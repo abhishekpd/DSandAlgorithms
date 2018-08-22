@@ -51,6 +51,9 @@
     <ClCompile Include="src\StackNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\MatrixProblems.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\TreeProblems.h">
@@ -84,6 +87,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\StackNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\MatrixProblems.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
