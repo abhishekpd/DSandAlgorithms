@@ -5,6 +5,7 @@
 #include "../header/LLProblems.h"
 #include "../header/SortingSearchingAlgorithms.h"
 #include "../header/GeneralProblems.h"
+#include "../header/MatrixProblems.h"
  
 int main()
 {
@@ -19,7 +20,8 @@ int main()
 		std::cout << "\n2) Array Problems" << std::endl;
 		std::cout << "\n3) LinkedList Problmes" << std::endl;
 		std::cout << "\n4) Sorting & Searching Algorithm" << std::endl;
-		std::cout << "\n5) General Data Structure Problems" << std::endl;
+		std::cout << "\n5) Matrix Problems" << std::endl;
+		std::cout << "\n6) General Data Structure Problems" << std::endl;
 		std::cout << "\nInput your choice\t";
 		std::cin >> m_choice;
 
@@ -38,9 +40,12 @@ int main()
 				SortingSearchingAlgorithms::SortingSearchingMenu();
 				break;
 			case 5:
-				GeneralProblems::ProblemsMenu();
+				MatrixProblems::MatrixProblemsMenu();
 				break;
 			case 6:
+				GeneralProblems::ProblemsMenu();
+				break;
+			case 7:
 				std::cout << "\nComing Soon" << std::endl;
 				break;
 			default :
